@@ -1,0 +1,151 @@
+esphome:
+  name: irl02
+  platform: ESP32
+  board: esp32dev
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "IRL02 Fallback Hotspot"
+    password: "CECsIRL02rhX"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+ota: !secret ota
+
+mqtt: !secret mqtt
+
+remote_receiver:
+  pin:
+    number: GPIO15
+    inverted: true
+  dump:
+    - lg
+    #- nec
+    #- panasonic
+    #- pioneer
+    #- jvc
+    #- samsung
+    #- sony
+    #- rc_switch
+    #- rc5
+    - raw
+
+binary_sensor:
+  - platform: remote_receiver
+    name: irl02_lgtv_hdmi1_detected
+    raw:
+      code: [9024, -4512, 564, -564, 564, -564, 564, -1692, 564, -564, 564, -564, 564, -564, 564, -564, 564, -564, 564, -1692, 564, -1692, 564, -564, 564, -1692, 564, -1692, 564, -1692, 564, -1692, 564, -1692, 564, -564, 564, -1692, 564, -1692, 564, -1692, 564, -564, 564, -564, 564, -1692, 564, -1692, 564, -1692, 564, -564, 564, -564, 564, -564, 564, -1692, 564, -1692, 564, -564, 564, -564, 564]
+  - platform: remote_receiver
+    name: irl02_car_ditto_detected
+    raw:
+      code: [8953, -2236, 571]
+  - platform: remote_receiver
+    name: irl02_car_ch_minus_detected
+    lg:
+        data: 0x00FFA25D
+        nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_ch
+    lg:
+        data: 0x00FF629D
+        nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_ch_plus_detected
+    lg:
+      data: 0x00FFE21D
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_rewind_detected
+    lg:
+      data: 0x00FF22DD
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_fast_forward_detected
+    lg:
+      data: 0x00FF02FD
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_play_pause_detected
+    lg:
+      data: 0x00FFC23D
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_vol_minus_detected
+    lg:
+      data: 0x00FFE01F
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_vol_plus_detected
+    lg:
+      data: 0x00FFA857
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_eq_detected
+    lg:
+      data: 0x00FF906F
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_0_detected
+    lg:
+      data: 0x00FF6897
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_100_detected
+    lg:
+      data: 0x00FF9867
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_200_detected
+    lg:
+      data: 0x00FFB04F
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_1_detected
+    lg:
+      data: 0x00FF30CF
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_2_detected
+    lg:
+      data: 0x00FF18E7
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_3_detected
+    lg:
+      data: 0x00FF7A85
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_4_detected
+    lg:
+      data: 0x00FF10EF
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_5_detected
+    lg:
+      data: 0x00FF38C7
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_6_detected
+    lg:
+      data: 0x00FF5AA5
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_7_detected
+    lg:
+      data: 0x00FF42BD
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_8_detected
+    lg:
+      data: 0x00FF4AB5
+      nbits: 32
+  - platform: remote_receiver
+    name: irl02_car_9_detected
+    lg:
+      data: 0x00FF52AD
+      nbits: 32

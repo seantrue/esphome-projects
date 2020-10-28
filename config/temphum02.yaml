@@ -1,0 +1,48 @@
+esphome:
+  name: temphum02
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: "sardines2"
+  password: "facefacefa"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Temphum02 Fallback Hotspot"
+    password: "CECsDDDDarhX"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "albatross123$"
+
+ota:
+  password: "albatross123$"
+  
+mqtt:
+  broker: 192.168.2.131
+  username: honestbroker
+  password: honestbroker123$
+  
+i2c:
+  sda: GPIO4
+  scl: GPIO5
+  scan: True
+  id: bus_a
+
+sensor:
+  - platform: dht
+    pin: D8
+    temperature:
+      name: "Temperature"
+    humidity:
+      name: "Humidity"
+    update_interval: 60s
+  - platform: adc
+    name: Analog
+    pin: A0

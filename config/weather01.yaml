@@ -1,0 +1,81 @@
+esphome:
+  name: weather01
+  platform: ESP8266
+  board: d1_mini
+wifi:
+  networks:
+  - ssid: sardines2
+    password: facefacefa
+
+captive_portal:
+
+logger:
+  baud_rate: 115200
+  tx_buffer_size: 512
+  hardware_uart: UART0
+  level: DEBUG
+  logs: {}
+  esp8266_store_log_strings_in_flash: true
+
+ota:
+  password: albatross123$
+  safe_mode: true
+  port: 3232
+
+mqtt:
+  broker: 192.168.2.131
+  username: honestbroker
+  password: honestbroker123$
+
+i2c:
+  sda: GPIO4
+  scl: GPIO5
+  scan: True
+  id: bus_a
+
+#spi:
+#  clk_pin: GPIO14
+#  mosi_pin: GPIO13
+#  miso_pin: GPIO12
+  
+#as3935_spi:
+#  irq_pin: GPIO15
+#  cs_pin: GPIO2
+#  spike_rejection: 11
+#  noise_level: 4
+#  div_ratio: 32
+#  capacitance: 7
+sensor:
+  - platform: bme280
+    temperature:
+      name: "Temperature"
+      oversampling: 16x
+    pressure:
+      name: "Pressure"
+    humidity:
+      name: "Humidity"
+    address: 0x76
+    update_interval: 60s
+#  - platform: as3935
+#    lightning_energy:
+#      name: "Lightning Energy"
+#    distance:
+#      name: "Distance Storm"
+  - platform: sht3xd
+    temperature:
+      name: "Temperature-2"
+    humidity:
+      name: "Humidity-2"
+    address: 0x44
+    update_interval: 60s
+#  - platform: dht
+#    pin: GPIO16
+#    temperature:
+#      name: "Temperature-3"
+#    humidity:
+#      name: "Humidity-3"
+#    update_interval: 60s
+
+#binary_sensor:
+#  - platform: as3935
+#    name: "Storm Alert"

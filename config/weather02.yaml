@@ -1,0 +1,98 @@
+esphome:
+  name: weather02
+  platform: ESP32
+  board: lolin_d32
+  
+wifi:
+  networks:
+  - ssid: sardines2
+    password: facefacefa
+
+captive_portal:
+
+logger:
+
+time:
+  - platform: homeassistant
+    id: esptime
+
+i2c:
+  - id: bus_a
+    sda: GPIO21
+    scl: GPIO22
+    scan: True
+  - id: bus_b
+    sda: GPIO33
+    scl: GPIO32
+    scan: True
+
+spi:
+  miso_pin: GPIO12
+  mosi_pin: GPIO13
+  clk_pin: GPIO18
+
+api:
+  password: albatross123$
+  port: 6053
+  reboot_timeout: 15min
+
+ota:
+  password: albatross123$
+  safe_mode: true
+  port: 3232
+
+as3935_spi:
+  irq_pin: GPIO5
+  cs_pin: GPIO19
+  spike_rejection: 11
+  noise_level: 4
+  div_ratio: 32
+  capacitance: 7
+
+#deep_sleep:
+#  run_duration: 10s
+#  sleep_duration: 50s
+
+sensor:
+  - platform: bme280
+    temperature:
+      id: bme_temperature
+      name: "Temperature"
+      oversampling: 16x
+    pressure:
+      name: "Pressure"
+      id: bme_pressure
+    humidity:
+      name: "Humidity"
+      id: bme_humidity
+    address: 0x76
+    update_interval: 60s
+  - platform: as3935
+    lightning_energy:
+      name: "Lightning Energy"
+    distance:
+      name: "Distance Storm"
+
+binary_sensor:
+  - platform: as3935
+    name: "Storm Alert"
+font:
+  - file: 'ClearSans-Regular.ttf'
+    id: font1
+    size: 10
+
+display:
+  - platform: ssd1306_i2c
+    model: "SSD1306 64x48"
+    address: 0x3C
+    lambda: |-
+      it.strftime(0, 0, id(font1), TextAlign::TOP_LEFT, "Time %H:%M", id(esptime).now());
+      if (id(bme_temperature).has_state()) {
+        it.printf(0,12, id(font1), TextAlign::TOP_LEFT , "Temp %.1fF", id(bme_temperature).state*1.8 + 32);
+      }
+      if (id(bme_humidity).has_state()) {
+        it.printf(0,24, id(font1), TextAlign::TOP_LEFT , "Hum  %.1f%%", id(bme_humidity).state);
+      }
+      if (id(bme_pressure).has_state()) {
+        it.printf(0,36, id(font1), TextAlign::TOP_LEFT , "Baro %.1fin", id(bme_pressure).state*0.02953);
+      }

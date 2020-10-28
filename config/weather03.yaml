@@ -1,0 +1,53 @@
+esphome:
+  name: weather03
+  platform: ESP8266
+  board: nodemcu
+  
+wifi:
+  networks:
+  - ssid: sardines2
+    password: facefacefa
+
+ota:
+  password: albatross123$
+  safe_mode: true
+  port: 3232
+
+
+captive_portal:
+
+logger:
+
+i2c:
+  - sda: GPIO4
+    scl: GPIO5
+    scan: True
+
+mqtt:
+  broker: 192.168.2.131
+  username: honestbroker
+  password: honestbroker123$
+
+sensor:
+  - platform: bmp085
+    update_interval: 60s
+    temperature:
+      id: bme_temperature3
+      name: "Temperature 3"
+      #oversampling: 16x
+    pressure:
+      name: "Pressure 3"
+      id: bme_pressure3
+  - platform: bh1750
+    name: "Luminance 3"
+    id: bh_luminance3
+    address: 0x23
+    measurement_time: 69
+    update_interval: 60s
+  - platform: dht
+    model: DHT11
+    id: dht_humidity3
+    pin: GPIO14
+    humidity:
+      name: "Humidity 3"
+    update_interval: 60s

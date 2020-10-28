@@ -1,0 +1,25 @@
+esphome:
+  name: testnode1
+  platform: ESP8266
+  board: d1
+
+wifi:
+  ssid: "sardines2"
+  password: "facefacefa"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Testnode1 Fallback Hotspot"
+    password: "87RUW7E3N9Bq"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "albatross123$"
+
+ota:
+  password: "albatross123$"

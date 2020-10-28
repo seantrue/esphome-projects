@@ -1,0 +1,25 @@
+esphome:
+  name: beacon01
+  platform: ESP32
+  board: lolin_d32
+  
+wifi:
+  networks:
+  - ssid: sardines2
+    password: facefacefa
+
+captive_portal:
+
+logger:
+
+api:
+  password: albatross123$
+  port: 6053
+  reboot_timeout: 15min
+
+ota:
+  password: albatross123$
+  safe_mode: true
+  port: 3232
+
+esp32_ble_tracker:
