@@ -1,8 +1,8 @@
 substitutions:
-  device: irl01
-  name: Tiny Nightlight
-  light_id: tiny_lightnight
-  iot: !secret iot00
+  device: irl03
+  name: Small Nightlight
+  light_id: small_lightnight
+  iot: !secret iot01
 esphome:
   name: ${device}
   platform: ESP8266

@@ -1,0 +1,222 @@
+- internal: true
+  name: ditto
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: ditto
+  platform: remote_receiver
+  raw:
+    code:
+    - 8953
+    - -2236
+    - 571
+- internal: true
+  lg:
+    data: 16753245
+    nbits: 32
+  name: ch_minus
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: ch_minus
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16736925
+    nbits: 32
+  name: ''
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: ''
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16769565
+    nbits: 32
+  name: ch_plus
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: ch_plus
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16720605
+    nbits: 32
+  name: rewind
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: rewind
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16712445
+    nbits: 32
+  name: fast_forward
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: fast_forward
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16761405
+    nbits: 32
+  name: play_pause
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: play_pause
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16769055
+    nbits: 32
+  name: vol_minus
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: vol_minus
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16754775
+    nbits: 32
+  name: vol_plus
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: vol_plus
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16748655
+    nbits: 32
+  name: eq
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: eq
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16738455
+    nbits: 32
+  name: '0'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '0'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16750695
+    nbits: 32
+  name: '100'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '100'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16756815
+    nbits: 32
+  name: '200'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '200'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16724175
+    nbits: 32
+  name: '1'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '1'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16718055
+    nbits: 32
+  name: '2'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '2'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16743045
+    nbits: 32
+  name: '3'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '3'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16716015
+    nbits: 32
+  name: '4'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '4'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16726215
+    nbits: 32
+  name: '5'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '5'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16734885
+    nbits: 32
+  name: '6'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '6'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16728765
+    nbits: 32
+  name: '7'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '7'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16730805
+    nbits: 32
+  name: '8'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '8'
+  platform: remote_receiver
+- internal: true
+  lg:
+    data: 16732845
+    nbits: 32
+  name: '9'
+  on_press:
+  - text_sensor.template.publish:
+      id: template_carmp3
+      state: '9'
+  platform: remote_receiver

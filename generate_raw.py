@@ -1,8 +1,13 @@
-lines = [line.strip() for line in open("QIP6200-2").readlines()]
+lines = [line.strip() for line in open("QIP6200-2_lirc.conf").readlines()]
 lines = [line for line in lines if not line.startswith("#")]
 track = ("header","one","zero","ptrail","bits")
 definitions = {}
 in_codes = False
+print("""# Example configuration entry
+text_sensor:
+  - platform: template
+    name: "verizon"
+    id: template_verizon""")
 for line in lines:
     if not line:
         continue
@@ -32,9 +37,14 @@ for line in lines:
         timing += definitions["ptrail"]
         for i in range(1,len(timing),2):
             timing[i] *= -1
-        print(f"""  - platform: remote_receiver
-    name: irl01_verizon_{name.replace('KEY_','').lower()}_detected
-    raw:""")
-        print(f"      codes: {timing}")
+        print(f"""- platform: remote_receiver
+  internal: true
+  name: "{name.lower()}"
+  on_press:
+    - text_sensor.template.publish:
+        id: template_verizon
+        state: "{name[4:].lower()}"
+  raw:
+    code: {timing}""")
 
 

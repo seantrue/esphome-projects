@@ -1,6 +1,6 @@
 # Codes for the Verizon FIOS DVR set top box
 - platform: remote_receiver
-  name: "ir_fios_ditto_command_detected"
+  name: "ir_verizon_ditto_command_detected"
   raw:
     code: [9046, -2218, 518]
 - platform: remote_receiver

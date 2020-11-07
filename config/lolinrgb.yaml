@@ -1,0 +1,30 @@
+effects:
+  # Customize parameters
+  - random:
+  name: "Slow Random"
+  transition_length: 30s
+  update_interval: 30s
+  - random:
+  name: "Fast Random"
+  transition_length: 4s
+  update_interval: 5s
+  - addressable_rainbow:
+  name: Rainbow
+  speed: 10
+  width: 50
+  - addressable_twinkle:
+  name: Twinkle Effect
+  twinkle_probability: 5%
+  progress_interval: 4ms
+  - addressable_random_twinkle:
+  name: Random Twinkle
+  twinkle_probability: 5%
+  progress_interval: 32ms
+  - addressable_fireworks:
+  name: Fireworks
+  update_interval: 32ms
+  spark_probability: 10%
+  use_random_color: false
+  fade_out_rate: 120
+  - addressable_flicker:
+      name: Flicker

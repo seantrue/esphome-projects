@@ -1,0 +1,74 @@
+# Built on LolinD32 Breakout V1.1 board level ic2 not working
+# i2c0 scl,sda markings are reversed
+# i2c1 is miswired
+substitutions:
+  device: weather04
+  name: Weather Station 4
+  iot: !secret iot03
+  platform: ESP32
+  board: lolin_d32
+
+esphome:
+  name: ${device}
+  platform: ${platform}
+  board: ${board}
+  includes:
+    - veml7700_custom_sensor.h
+    - sht31_custom_sensor.h
+  libraries:
+    - "https://github.com/adafruit/Adafruit_VEML7700"
+    - "https://github.com/adafruit/Adafruit_SHT31"
+
+wifi: 
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: ${iot}
+    gateway: !secret gateway
+    subnet: !secret subnet
+
+# Enable logging
+logger:
+
+ota: !secret ota
+
+api: !secret api
+
+# External connector bus IC20
+i2c:
+  - id: bus_b
+    scl: GPIO23
+    sda: GPIO19
+    scan: True
+
+sensor:
+- platform: custom
+  id: ${device}_veml
+  lambda: |-
+    auto veml7700 = new VEML7700CustomSensor();
+    App.register_component(veml7700);
+    return {veml7700, veml7700->lux_sensor, veml7700->white_sensor, veml7700->als_sensor};
+  sensors:
+    - name: "VEML7700 Light" # Required dummy sensor
+    - name: "VEML770 Lux"
+      unit_of_measurement: Lux
+      accuracy_decimals: 0
+    - name: "VEML770 White"
+      unit_of_measurement: raw
+      accuracy_decimals: 0
+    - name: "VEML770 ALS"
+      unit_of_measurement: raw
+      accuracy_decimals: 0
+- platform: custom
+  id: ${device}_sht31
+  lambda: |-
+    auto sht31 = new SHT31CustomSensor();
+    App.register_component(sht31);
+    return {sht31, sht31->temperature_sensor, sht31->humidity_sensor};
+  sensors:
+    - name: "SHT31 Temperature"
+      unit_of_measurement: C
+      accuracy_decimals: 1
+    - name: "SHT31 Humidity"
+      unit_of_measurement: "%"
+      accuracy_decimals: 1
