@@ -1,0 +1,41 @@
+substitutions:
+  name: Bathroom Nightlight
+  device: neohumtemp01
+  platform: ESP8266
+  board: d1_mini
+  iot: 192.168.2.14
+
+esphome:
+  name: ${device}
+  platform: ${platform}
+  board: ${board}
+
+
+logger:
+
+
+ota: !secret ota
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: ${iot}
+    gateway: !secret gateway
+    subnet: !secret subnet
+
+i2c:
+  sda: D2
+  scl: D1
+  scan: True
+  id: bus_a
+  
+wled:
+
+light:
+  - platform: neopixelbus
+    pin: GPIO2
+    method: ESP8266_ASYNC_UART1
+    num_leds: 7
+    name: ${name}
+    effects: !include includes/nightlight_effects.yaml

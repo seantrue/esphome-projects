@@ -1,0 +1,35 @@
+substitutions:
+  name: "Globe Nightlight"
+  device: neopixel02
+  platform: ESP8266
+  board: d1_mini
+  iot: 192.168.2.130
+
+esphome:
+  name: ${device}
+  platform: ${platform}
+  board: ${board}
+
+logger:
+
+ota: !secret ota
+
+mqtt: !secret mqtt
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: ${iot}
+    gateway: !secret gateway
+    subnet: !secret subnet
+
+wled:
+
+light:
+  - platform: neopixelbus
+    pin: GPIO1
+    method: ESP8266_UART0
+    num_leds: 24
+    name: "Globe Nightlight"
+    effects: !include includes/nightlight_effects.yaml

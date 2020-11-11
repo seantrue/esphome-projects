@@ -1,0 +1,9 @@
+- file: 'fonts/ClearSans-Regular.ttf'
+  id: font8
+  size: 8
+- file: 'fonts/ClearSans-Regular.ttf'
+  id: font9
+  size: 9
+- file: 'fonts/ClearSans-Regular.ttf'
+  id: font10
+  size: 10
